@@ -1,0 +1,23 @@
+.goog-te-gadget .goog-te-combo {
+    background: transparent;
+    border: none;
+    font-size: 13px;
+    outline: none;
+    appearance: none; /* Unified appearance property */
+    color: #000 !important; /* Ensure color applies */
+    margin: 0 !important;
+    padding-top: 2px;
+    text-transform: capitalize;
+}
+  
+  .goog-te-gadget>*:nth-child(n + 2) {
+    display: none;
+  }
+  
+  .goog-te-gadget {
+    font-size: 0 !important;
+    display: flex;
+}
+#google_translate_element{
+    margin-left: 40px;
+}
