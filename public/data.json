@@ -1,0 +1,22 @@
+[
+  {
+    "idx": 1,
+    "question": "How do I place an order for groceries online??",
+    "answer": "First, visit our website or mobile app and browse through our wide selection of products. Once you've found what you need, add the items to your virtual cart. Proceed to checkout, where you'll be prompted to enter your delivery address and payment details. Review your order, confirm, and you're done! Your groceries will be delivered to your doorstep at the scheduled time."
+  },
+  {
+    "idx": 2,
+    "question": "Are the groceries sold online fresh and of high quality?",
+    "answer": "Yes, we take great care to ensure that the groceries we sell online are fresh and of the highest quality. Our products go through rigorous quality checks and are sourced from trusted suppliers. We prioritize freshness and quality to provide our customers with the best possible shopping experience."
+  },
+  {
+    "idx": 3,
+    "question": "What payment methods are accepted for online grocery orders?",
+    "answer": "We offer a variety of secure payment options to make your online shopping experience convenient. You can pay for your grocery order using credit or debit cards, mobile wallets, online banking, or cash on delivery, depending on your preference. Rest assured that all transactions are encrypted and securely processed to protect your financial information."
+  },
+  {
+    "idx": 4,
+    "question": "What if I'm not satisfied with my online grocery order?",
+    "answer": "If you're not completely satisfied with your online grocery order for any reason, please contact our customer support team within a reasonable timeframe. We'll gladly assist you and may offer a refund, replacement, or credit, depending on the circumstances. Your feedback helps us improve our services and ensures that you have a positive shopping experience with us."
+  }
+]

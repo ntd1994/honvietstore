@@ -1,0 +1,8 @@
+{
+  "baseUrl": "http://13.54.178.228:8000",
+  "env": {
+    "codeCoverage": {
+      "url": "/api/__coverage__"
+    }
+  }
+}
