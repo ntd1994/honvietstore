@@ -4,10 +4,50 @@ import { Metadata } from "next"
 import { getCollectionsList, getProductsList, getRegion } from "@lib/data"
 import FeaturedProducts from "@modules/home/components/featured-products"
 import Hero from "@modules/home/components/hero"
-import { ProductCollectionWithPreviews } from "types/global"
+import { CategoryPreviewType, ProductCollectionWithPreviews } from "types/global"
 import { cache } from "react"
 import FeaturedCategories from "@modules/home/components/featured-categories"
 import FeaturedThumbnails from "@modules/home/components/featured-thumbnail"
+import LeftSidebar from "../../../components/LeftSidebar/LeftSidebar"
+import barbecue   from "../../../../public/static/images/barbecue.png"
+import drink      from "../../../../public/static/images/drink.png"
+import fruit      from "../../../../public/static/images/fruit.png"
+import seasoning  from "../../../../public/static/images/seasoning.png"
+import softDrink  from "../../../../public/static/images/soft-drink.png"
+import vegetable  from "../../../../public/static/images/vegetable.png"
+
+const categories: CategoryPreviewType[] = [
+  {
+    id: "1",
+    title: "Barbecue",
+    thumbnail: barbecue.src,
+  },
+  {
+    id: "2",
+    title: "Drink",
+    thumbnail: drink.src,
+  },
+  {
+    id: "3",
+    title: "Fruit",
+    thumbnail: fruit.src,
+  },
+  {
+    id: "4",
+    title: "Seasoning",
+    thumbnail: seasoning.src,
+  },
+  {
+    id: "5",
+    title: "SoftDrink",
+    thumbnail: softDrink.src,
+  },
+  {
+    id: "6",
+    title: "Vegetable",
+    thumbnail: vegetable.src,
+  },
+]
 
 export const metadata: Metadata = {
   title: "HonVietStore",
@@ -72,16 +112,46 @@ export default async function Home({
   return (
     <>
       <Hero />
-      <div className="py-12">
+      {/* <div className="py-12">
         <ul className="flex flex-col gap-x-6">
           <FeaturedCategories />
         </ul>
-      </div>
-      <div className="py-12">
-        <ul className="flex flex-col gap-x-6">
-          <FeaturedProducts collections={collections} region={region} />
-        </ul>
+      </div> */}
+      <div className="grid grid-cols-12 gap-x-6 py-12 mt-12 pr-4 pl-8">
+
+        {/* leftsidebar */}
+        <div className="col-span-2 my-24 relative">
+          <div className="sticky top-0 p-3 bg-gray-200 rounded-3xl shadow-inner min-h-[1000px]">
+            <h2 className="txt-compact-xlarge-plus font-bold uppercase text-green-500 text-center pt-5">Categories</h2>
+            <LeftSidebar categoryLists={categories}/>
+          </div>
+        </div>
+
+        {/* content */}
+        <div className="col-span-10 ">
+          <ul className="flex flex-col">
+            <FeaturedProducts collections={collections} region={region} />
+          </ul>
+        </div>
       </div>
     </>
   )
 }
+
+
+// return (
+//   <>
+//     <Hero />
+//     {/* <div className="py-12">
+//       <ul className="flex flex-col gap-x-6">
+//         <FeaturedCategories />
+//       </ul>
+//     </div> */}
+//     <div className="py-12">
+//       <ul className="flex flex-col gap-x-6">
+//         <FeaturedProducts collections={collections} region={region} />
+//       </ul>
+//     </div>
+//   </>
+// )
+// }

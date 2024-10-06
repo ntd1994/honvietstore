@@ -11,7 +11,7 @@ export default function CategoryPreview({
 }) {
   return (
     <LocalizedClientLink href={`/products`} className="group">
-      <div>
+      <div className="flex justify-center transition-transform duration-200 transform-gpu hover:scale-[1.1] hover:z-10">
         <Thumbnail thumbnail={thumbnail} size="square" />
         <div className="flex txt-compact-medium mt-4 justify-center items-center">
           {/* <Text className="text-ui-fg-subtle text-center text-green-500">{title}</Text> */}
@@ -20,3 +20,4 @@ export default function CategoryPreview({
     </LocalizedClientLink>
   )
 }
+        {/* transition-transform duration-200 transform-gpu hover:scale-[1.02] */}

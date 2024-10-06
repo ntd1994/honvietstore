@@ -33,10 +33,11 @@ export default function RootLayout(props: { children: React.ReactNode }) {
    
 
    </head>
-      <body>
-      
-        <main className="relative overflow-hidden">{props.children}</main>
+      <body className="bg-[#F3F4F6]">     
+        <main className="relative">{props.children}</main>
       </body>
     </html>
   )
 }
+
+{/* <main className="relative overflow-hidden">{props.children}</main> */}
