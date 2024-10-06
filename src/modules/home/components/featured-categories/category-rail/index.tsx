@@ -51,7 +51,7 @@ export default function CategoryRail({
   }
 
   return (
-    <div className="content-container  py-12 small:py-40">
+    <div className="content-container py-12 small:py-40">
       <div className="">
         <ul className="grid grid-cols-2 small:grid-cols-6 gap-x-5 small:gap-y-5">
           {categoryLists

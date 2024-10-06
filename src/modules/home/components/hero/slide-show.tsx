@@ -16,7 +16,7 @@ const Slideshow: React.FC<SlideshowProps> = ({ images }) => {
   }, [images.length])
 
   return (
-    <div className="relative w-[100vw] h-[90vh] overflow-hidden">
+    <div className="relative w-[100vw] h-[90vh]">
       {images.map((image, index) => (
         <img
           alt="image"
