@@ -1,5 +1,5 @@
 // NavbarClient.tsx
-'use client'; // Đánh dấu là Client Component
+'use client';
 
 import { useEffect, useState } from "react";
 import { listRegions } from "@lib/data"; // Thư viện dữ liệu

@@ -15,6 +15,7 @@ import fruit      from "../../../../public/static/images/fruit.png"
 import seasoning  from "../../../../public/static/images/seasoning.png"
 import softDrink  from "../../../../public/static/images/soft-drink.png"
 import vegetable  from "../../../../public/static/images/vegetable.png"
+import TopDealLowPrice from "components/TopDealLowPrice"
 
 const categories: CategoryPreviewType[] = [
   {
@@ -112,16 +113,11 @@ export default async function Home({
   return (
     <>
       <Hero />
-      {/* <div className="py-12">
-        <ul className="flex flex-col gap-x-6">
-          <FeaturedCategories />
-        </ul>
-      </div> */}
-      <div className="grid grid-cols-12 gap-x-6 py-12 mt-12 pr-4 pl-8">
+      <div className="grid grid-cols-12 gap-x-6 py-2 mt-2 pr-4 pl-8">
 
         {/* leftsidebar */}
         <div className="col-span-2 my-24 relative">
-          <div className="sticky top-0 p-3 bg-gray-200 rounded-3xl shadow-inner min-h-[1000px]">
+          <div className="sticky top-0 p-3 bg-white rounded-3xl shadow-inner min-h-[1000px]">
             <h2 className="txt-compact-xlarge-plus font-bold uppercase text-green-500 text-center pt-5">Categories</h2>
             <LeftSidebar categoryLists={categories}/>
           </div>
@@ -129,6 +125,10 @@ export default async function Home({
 
         {/* content */}
         <div className="col-span-10 ">
+          {/* top deal at a low price */}
+          <ul className="flex flex-col">
+            <TopDealLowPrice collections={collections} region={region} />
+          </ul>
           <ul className="flex flex-col">
             <FeaturedProducts collections={collections} region={region} />
           </ul>

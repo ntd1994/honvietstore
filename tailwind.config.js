@@ -34,6 +34,7 @@ module.exports = {
           80: "#1F2937",
           90: "#111827",
         },
+        'custom-red': 'rgb(255, 66, 78)',
       },
       borderRadius: {
         none: "0px",
