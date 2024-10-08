@@ -37,7 +37,7 @@ export default async function ProductPreview({
     >
       {/* Wrapper for the card with shadow and hover effect */}
       <div className="transition-transform duration-200 transform-gpu hover:scale-[1.02]">
-        <div className="bg-white shadow-lg rounded-lg overflow-hidden transition-shadow duration-200 ease-in-out hover:shadow-2xl border border-transparent hover:border-green-500">
+        <div className="bg-white shadow-lg rounded-lg overflow-hidden transition-shadow duration-200 ease-in-out hover:shadow-2xl border border-gray-300 hover:border-green-700">
           <Thumbnail
             thumbnail={productPreview.thumbnail}
             size="square"

@@ -1,8 +1,6 @@
 import { Region } from "@medusajs/medusa"
-
 import ProductRail from "@modules/home/components/featured-products/product-rail"
 import { ProductCollectionWithPreviews } from "types/global"
-import Hero from "../hero"
 import Sales from "../sales"
 import Ads from "../ads"
 import Ads2 from "../ads2"

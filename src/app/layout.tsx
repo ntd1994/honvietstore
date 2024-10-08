@@ -33,7 +33,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
    
 
    </head>
-      <body className="bg-[#F3F4F6]">     
+      <body className="bg-gray-200">     
         <main className="relative">{props.children}</main>
       </body>
     </html>

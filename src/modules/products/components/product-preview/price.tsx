@@ -13,8 +13,8 @@ export default async function PreviewPrice({ price }: { price: PriceType }) {
       )}
       <Text
         className={clx("font-bold text-lg", {
-          "text-red-600": price.price_type === "sale",
-          "text-black": price.price_type !== "sale",
+          "text-yellow-600": price.price_type === "sale",
+          "text-custom-red": price.price_type !== "sale",
         })}
       >
         {price.calculated_price}
