@@ -4,7 +4,6 @@ import MedusaCTA from "@modules/layout/components/medusa-cta"
 
 export default function Footer() {
   const categories = [
-    { id: 1, title: "Bữa em chế", handle: "bua-em-che" },
     { id: 2, title: "Trà", handle: "tra" },
     { id: 3, title: "Cà Phê", handle: "ca-phe" },
     { id: 4, title: "Cacao - Socola", handle: "cacao-socola" },
@@ -33,6 +32,21 @@ export default function Footer() {
             >
               HONVIETSTORE
             </LocalizedClientLink>
+            <p className="text-gray-400 mt-2">
+              TAP Market không chỉ là nơi mua sắm, mà còn là cầu nối văn hóa, giúp quảng bá các giá trị truyền thống và sản phẩm chất lượng cao của Việt Nam ra thế giới.
+            </p>
+            <p className="text-gray-400 mt-2">
+              Thuộc hệ sinh thái TAP Media Inc
+            </p>
+            <p className="text-gray-400 mt-2">
+              Email: contact@tapmediainc.com
+            </p>
+            <p className="text-gray-400 mt-2">
+              Hotline: +13605050505
+            </p>
+            <p className="text-gray-400 mt-2">
+              Website: <a href="https://tapmediainc.com" target="_blank" rel="noreferrer" className="text-blue-300 hover:underline">https://tapmediainc.com</a>
+            </p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-10">
             <div className="flex flex-col gap-y-2">

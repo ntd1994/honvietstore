@@ -19,8 +19,8 @@ export default function ProductCheap({
   }
 
   return (
-    <div className="content-container py-12 small:py-24">
-      <div className="bg-white p-8 rounded-3xl shadow-inner">
+    <div className="px-2 md:content-container py-12 small:py-24">
+      <div className="bg-white p-4 md:p-8 rounded-3xl shadow-inner">
         <div className="flex justify-between mb-4">
           <Text className="txt-compact-xlarge-plus font-bold uppercase text-red-500">
             Top Deal Giá Rẻ
@@ -31,7 +31,7 @@ export default function ProductCheap({
         </div>
 
         {/* Cập nhật thành một hàng với tối đa 5 item */}
-        <ul className="flex overflow-x-auto space-x-4">
+        <ul className="flex overflow-x-auto space-x-1 md:space-x-4">
         {products.map((product) => ( // Hiển thị tất cả sản phẩm
             <li key={product.id} className="flex-shrink-0 w-1/2 md:w-1/5 p-1"> {/* Mỗi item chiếm 1/4 chiều rộng trên smartphone, 1/5 trên màn hình lớn */}
             <ProductPreview
