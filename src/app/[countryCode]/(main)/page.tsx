@@ -16,6 +16,7 @@ import seasoning  from "../../../../public/static/images/seasoning.png"
 import softDrink  from "../../../../public/static/images/soft-drink.png"
 import vegetable  from "../../../../public/static/images/vegetable.png"
 import TopDealLowPrice from "components/TopDealLowPrice"
+// import FloatingChat from "components/FloatingChat/FloatingChat"
 
 const categories: CategoryPreviewType[] = [
   {
@@ -113,13 +114,13 @@ export default async function Home({
   return (
     <>
       <Hero />
-      <div className="grid grid-cols-12 gap-x-6 py-2 mt-2 pr-4 pl-8">
+      <div className="grid grid-cols-8 md:grid-cols-12 gap-x-6 py-2 mt-2 md:pr-4 md:pl-8">
 
         {/* leftsidebar */}
-        <div className="col-span-2 my-24 relative">
-          <div className="sticky top-0 p-3 bg-white rounded-3xl shadow-inner min-h-[1000px]">
-            <h2 className="txt-compact-xlarge-plus font-bold uppercase text-green-500 text-center pt-5">Categories</h2>
-            <LeftSidebar categoryLists={categories}/>
+        <div className="col-span-2 my-24 relative hidden md:block">
+          <div className="sticky top-24 bg-white rounded-3xl shadow-inner min-h-[1000px]">
+            <h2 className="txt-compact-xlarge-plus font-bold uppercase text-green-500 text-center pt-5">Danh mục</h2>
+            <LeftSidebar />
           </div>
         </div>
 
@@ -133,25 +134,11 @@ export default async function Home({
             <FeaturedProducts collections={collections} region={region} />
           </ul>
         </div>
+        {/* end content */}
       </div>
+
+      {/* Floating Chat Component */}
+      {/* <FloatingChat /> */}
     </>
   )
 }
-
-
-// return (
-//   <>
-//     <Hero />
-//     {/* <div className="py-12">
-//       <ul className="flex flex-col gap-x-6">
-//         <FeaturedCategories />
-//       </ul>
-//     </div> */}
-//     <div className="py-12">
-//       <ul className="flex flex-col gap-x-6">
-//         <FeaturedProducts collections={collections} region={region} />
-//       </ul>
-//     </div>
-//   </>
-// )
-// }
