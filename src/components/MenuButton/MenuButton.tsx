@@ -1,39 +1,38 @@
-"use client"; // Thêm dòng này ở đầu file
+"use client";
 
 import React, { useState } from 'react';
-import { FaBars, FaHome, FaSignInAlt, FaListUl, FaPhone, FaInfoCircle, FaQuestionCircle } from 'react-icons/fa'; // Thêm icon mới
+import { FaBars, FaHome, FaSignInAlt, FaListUl, FaPhone, FaInfoCircle, FaQuestionCircle, FaLeaf, FaCoffee, FaCookieBite, FaAppleAlt, FaPepperHot, FaWineBottle, FaFeather, FaHeartbeat, FaHome as FaHouse, FaPaintBrush, FaMale, FaFemale } from 'react-icons/fa';
 
 const categories = [
-  "Bữa em chế",
-  "Trà",
-  "Cà Phê",
-  "Cacao - Socola",
-  "Trái cây sấy khô",
-  "Trái cây sấy dẻo",
-  "Trái cây sấy thăng hoa",
-  "Gia Vị",
-  "Thực phẩm",
-  "Rượu",
-  "Yến",
-  "Sức khỏe",
-  "Đồ gia dụng",
-  "Đồ thủ công mỹ nghệ",
-  "Thời trang nam",
-  "Thời trang nữ",
+  { name: "Trà", icon: <FaLeaf />, url: "/collections/tra" },
+  { name: "Cà Phê", icon: <FaCoffee />, url: "/collections/ca-phe" },
+  { name: "Cacao - Socola", icon: <FaCookieBite />, url: "/collections/cacao-socola" },
+  { name: "Trái cây sấy khô", icon: <FaAppleAlt />, url: "/collections/trai-cay-say-kho" },
+  { name: "Trái cây sấy dẻo", icon: <FaAppleAlt />, url: "/collections/trai-cay-say-deo" },
+  { name: "Trái cây sấy thăng hoa", icon: <FaAppleAlt />, url: "/collections/trai-cay-say-thang-hoa" },
+  { name: "Gia Vị", icon: <FaPepperHot />, url: "/collections/gia-vi" },
+  { name: "Thực phẩm", icon: <FaHouse />, url: "/categorcollectionsies/thuc-pham" },
+  { name: "Rượu", icon: <FaWineBottle />, url: "/collections/ruou" },
+  { name: "Yến", icon: <FaFeather />, url: "/collections/yen" },
+  { name: "Sức khỏe", icon: <FaHeartbeat />, url: "/collections/suc-khoe" },
+  { name: "Đồ gia dụng", icon: <FaHouse />, url: "/collections/do-gia-dung" },
+  { name: "Đồ thủ công mỹ nghệ", icon: <FaPaintBrush />, url: "/collections/do-thu-cong-my-nghe" },
+  { name: "Thời trang nam", icon: <FaMale />, url: "/collections/thoi-trang-nam" },
+  { name: "Thời trang nữ", icon: <FaFemale />, url: "/collections/thoi-trang-nu" },
 ];
 
 const menuItems = [
-  { name: "Đăng nhập/Đăng ký", icon: <FaSignInAlt /> },
-  { name: "Home", icon: <FaHome /> },
-  { name: "Danh mục sản phẩm", icon: <FaListUl />, subItems: categories }, // Danh mục sản phẩm
-  { name: "Hỗ trợ", icon: <FaQuestionCircle /> },
-  { name: "Về chúng tôi", icon: <FaInfoCircle /> },
-  { name: "Liên hệ", icon: <FaPhone /> },
+  { name: "Đăng nhập/Đăng ký", icon: <FaSignInAlt />, url: "/account" },
+  { name: "Home", icon: <FaHome />, url: "/" },
+  { name: "Danh mục sản phẩm", icon: <FaListUl />, subItems: categories, url: "#" }, // Tạm thời để URL là "#"
+  { name: "Hỗ trợ", icon: <FaQuestionCircle />, url: "#" }, // Tạm thời để URL là "#"
+  { name: "Về chúng tôi", icon: <FaInfoCircle />, url: "/about" },
+  { name: "Liên hệ", icon: <FaPhone />, url: "/contact" },
 ];
 
 export default function CategoryMenu() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isSubMenuOpen, setIsSubMenuOpen] = useState(false); // Trạng thái cho submenu
+  const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -44,40 +43,40 @@ export default function CategoryMenu() {
   };
 
   return (
-    <div className="block md:hidden relative"> {/* Chỉ hiển thị trên smartphone và tablet */}
-      {/* Icon Button */}
+    <div className="block md:hidden relative z-10">
       <button
         onClick={toggleMenu}
         className="p-2 rounded-md text-gray-700 hover:bg-gray-200 transition-colors duration-200"
         aria-label="Menu"
       >
-        <FaBars size={24} /> {/* Sử dụng biểu tượng Hamburger */}
+        <FaBars size={24} />
       </button>
 
-      {/* Drawer Menu */}
       <div className={`fixed inset-0 bg-black bg-opacity-50 transition-opacity ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`} onClick={toggleMenu} />
-      <div className={`fixed top-0 right-0 bg-white shadow-lg rounded-lg w-60 transition-transform transform ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+      <div className={`fixed top-18 right-0 bg-white shadow-lg rounded-lg w-60 transition-transform transform ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <ul className="p-4">
           {menuItems.map((item, index) => (
             <li key={index} className="relative">
-              <button
-                onClick={item.subItems ? toggleSubMenu : toggleMenu} // Nếu có subItems thì mở submenu
+              <a
+                href={item.url}
+                onClick={item.subItems ? toggleSubMenu : toggleMenu}
                 className="flex items-center py-3 px-4 w-full text-left text-sm font-medium text-gray-700 hover:bg-green-100 transition-colors duration-200"
               >
                 {item.icon}
                 <span className="ml-2">{item.name}</span>
-              </button>
+              </a>
               {/* Submenu cho Danh mục sản phẩm */}
               {item.subItems && isSubMenuOpen && (
-                <ul className="pl-4">
+                <ul className="pl-4 max-h-72 overflow-y-auto border-t border-gray-300 mt-2">
                   {item.subItems.map((subItem, subIndex) => (
-                    <li key={subIndex} className="relative">
+                    <li key={subIndex} className="relative flex items-center">
+                      <span className="mr-2">{subItem.icon}</span>
                       <a
-                        href="#"
-                        className="block py-2 text-sm text-gray-600 hover:bg-green-100 transition-colors duration-200"
-                        onClick={toggleMenu} // Đóng menu khi click vào danh mục
+                        href={subItem.url}
+                        className="block py-2 text-sm text-gray-600 hover:bg-green-100 transition-colors duration-200 flex-grow"
+                        onClick={toggleMenu}
                       >
-                        {subItem}
+                        {subItem.name}
                       </a>
                     </li>
                   ))}

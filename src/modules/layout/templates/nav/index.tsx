@@ -19,7 +19,7 @@ export default async function Nav() {
           <div className="col-span-12 md:col-start-1 md:col-end-12 flex items-center justify-between h-full text-small-regular">
             {/* Group 1: Honvietstore and Navbar */}
             <div className="flex items-center flex-shrink-0">
-              <div className="flex items-center flex-shrink-0 text-black mr-6">
+              <div className="flex items-center flex-shrink-0 text-black mr-2">
                 <span className="font-semibold text-xl tracking-tight">
                   Honvietstore
                 </span>
@@ -57,7 +57,7 @@ export default async function Nav() {
               <Suspense
                 fallback={
                   <LocalizedClientLink
-                    className="hover:text-ui-fg-base flex gap-2"
+                    className="hover:text-ui-fg-base flex gap-2 z-0"
                     href="/cart"
                   >
                     Cart (0)
@@ -66,7 +66,7 @@ export default async function Nav() {
               >
                 <CartButton />
               </Suspense>
-              <div className="flex items-center gap-x-6 h-full flex-1 justify-end">
+              <div className=" items-center gap-x-6 h-full flex-1 justify-end hidden md:flex">
                 <div id="google_translate_element"></div>
               </div>
               {/* menu button */}
