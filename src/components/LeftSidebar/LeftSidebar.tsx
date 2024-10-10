@@ -1,42 +1,64 @@
 "use client"
 // src/components/LeftSidebar/LeftSidebar.tsx
-import { Region } from "@medusajs/medusa"
-import React, { useState } from "react";
-import FeaturedCategories from "@modules/home/components/featured-categories"
-import { CategoryPreviewType } from "types/global";
+import React, { useState, useEffect } from "react";
 import CategoryPreview from "@modules/categories/components/category-preview";
 
-export default function LeftSidebar({
-  categoryLists,
-}: {
-  categoryLists: CategoryPreviewType[]
-}) {
-  const [currentPage, setCurrentPage] = useState(0)
-  const categoriesPerPage = 6
+export default function LeftSidebar() {
+  // const [isMobile, setIsMobile] = useState<boolean>(false);
 
-  const totalPages = Math.ceil(categoryLists.length / categoriesPerPage)
+  // useEffect(()=> {
+  //   const updateMedia = () => {
+  //     setIsMobile(window.innerWidth < 768); // Adjust breakpoint as needed
+  //   };
 
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page)
-  }
+  //   window.addEventListener("resize", updateMedia);
+  //   updateMedia(); // Initial check
+
+  //   return () => {
+  //     window.removeEventListener("resize", updateMedia);
+  //   };
+  // },[]);
+  
+
+  
+  // Danh sách danh mục
+  const categories = [
+    "Bữa em chế",
+    "Trà",
+    "Cà Phê",
+    "Cacao - Socola",
+    "Trái cây sấy khô",
+    "Trái cây sấy dẻo",
+    "Trái cây sấy thăng hoa",
+    "Gia Vị",
+    "Thực phẩm",
+    "Rượu",
+    "Yến",
+    "Sức khỏe",
+    "Đồ gia dụng",
+    "Đồ thủ công mỹ nghệ",
+    "Thời trang nam",
+    "Thời trang nữ",
+  ];
 
   return (
     <div className="content-container py-6 small:py-2">
-      <ul className="flex justify-center flex-col gap-y-5">
-        {categoryLists
-          .slice(
-            currentPage * categoriesPerPage,
-            (currentPage + 1) * categoriesPerPage
-          )
-          .map((category) => (
-            <li key={category.id} className="relative h-20 my-5">
-              <CategoryPreview
-                thumbnail={category.thumbnail}
-                title={category.title}
-              />
-            </li>
-          ))}
+      <ul className="flex flex-col gap-y-1">
+        {categories.map((category, index) => (
+          <li key={index} className="relative">
+            <a
+              href="#"
+              className="block py-3 px-4 text-sm font-medium text-gray-700 hover:bg-green-100 transition-colors duration-200"
+            >
+              {category}
+            </a>
+            {/* Divider */}
+            {index < categories.length - 1 && (
+              <div className="border-b border-gray-300"></div>
+            )}
+          </li>
+        ))}
       </ul>
     </div>
-  )
+  );
 }

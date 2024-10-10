@@ -31,16 +31,16 @@ export default function ProductCheap({
         </div>
 
         {/* Cập nhật thành một hàng với tối đa 5 item */}
-        <ul className="flex overflow-x-auto space-x-4 ">
-          {products.slice(0, 5).map((product) => ( // Hiển thị tối đa 5 sản phẩm
-            <li key={product.id} className="flex-shrink-0 w-1/5 m-4"> {/* Mỗi item chiếm 1/5 chiều rộng */}
-              <ProductPreview
+        <ul className="flex overflow-x-auto space-x-4">
+        {products.map((product) => ( // Hiển thị tất cả sản phẩm
+            <li key={product.id} className="flex-shrink-0 w-1/2 md:w-1/5 p-1"> {/* Mỗi item chiếm 1/4 chiều rộng trên smartphone, 1/5 trên màn hình lớn */}
+            <ProductPreview
                 productPreview={product}
                 region={region}
                 isFeatured
-              />
+            />
             </li>
-          ))}
+        ))}
         </ul>
       </div>
     </div>

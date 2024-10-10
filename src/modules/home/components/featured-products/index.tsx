@@ -28,16 +28,16 @@ export default async function FeaturedProducts({
     )
 
     // Insert a sample component after every two ProductRail components
-    if ((index + 1) % 2 === 0) {
-      const adIndex = Math.floor((index + 1) / 2) % 3 // Rotate between ads
-      items.push(
-        <li key={`ad-${index}`}>
-          {adIndex === 0 && <Sales />}
-          {adIndex === 1 && <Ads />}
-          {adIndex === 2 && <Ads2 />}
-        </li>
-      )
-    }
+    // if ((index + 1) % 2 === 0) {
+    //   const adIndex = Math.floor((index + 1) / 2) % 3 // Rotate between ads
+    //   items.push(
+    //     <li key={`ad-${index}`}>
+    //       {adIndex === 0 && <Sales />}
+    //       {adIndex === 1 && <Ads />}
+    //       {adIndex === 2 && <Ads2 />}
+    //     </li>
+    //   )
+    // }
   })
 
   return items

@@ -1,11 +1,26 @@
-import { Text, clx } from "@medusajs/ui"
-import { getCategoriesList, getCollectionsList } from "@lib/data"
+import { Text } from "@medusajs/ui"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import MedusaCTA from "@modules/layout/components/medusa-cta"
 
-export default async function Footer() {
-  const { collections } = await getCollectionsList(0, 6)
-  const { product_categories } = await getCategoriesList(0, 6)
+export default function Footer() {
+  const categories = [
+    { id: 1, title: "Bữa em chế", handle: "bua-em-che" },
+    { id: 2, title: "Trà", handle: "tra" },
+    { id: 3, title: "Cà Phê", handle: "ca-phe" },
+    { id: 4, title: "Cacao - Socola", handle: "cacao-socola" },
+    { id: 5, title: "Trái cây sấy khô", handle: "trai-cay-say-kho" },
+    { id: 6, title: "Trái cây sấy dẻo", handle: "trai-cay-say-deo" },
+    { id: 7, title: "Trái cây sấy thăng hoa", handle: "trai-cay-say-thang-hoa" },
+    { id: 8, title: "Gia Vị", handle: "gia-vi" },
+    { id: 9, title: "Thực phẩm", handle: "thuc-pham" },
+    { id: 10, title: "Rượu", handle: "ruou" },
+    { id: 11, title: "Yến", handle: "yen" },
+    { id: 12, title: "Sức khỏe", handle: "suc-khoe" },
+    { id: 13, title: "Đồ gia dụng", handle: "do-gia-dung" },
+    { id: 14, title: "Đồ thủ công mỹ nghệ", handle: "do-thu-cong-my-nghe" },
+    { id: 15, title: "Thời trang nam", handle: "thoi-trang-nam" },
+    { id: 16, title: "Thời trang nữ", handle: "thoi-trang-nu" },
+  ]
 
   return (
     <footer className="bg-gray-800 text-white border-t border-gray-600 w-full">
@@ -20,23 +35,21 @@ export default async function Footer() {
             </LocalizedClientLink>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-10">
-            {collections && collections.length > 0 && (
-              <div className="flex flex-col gap-y-2">
-                <span className="txt-small-plus text-gray-300 font-semibold">Bộ Sưu Tập</span>
-                <ul className="grid grid-cols-1 gap-2 text-gray-400 txt-small">
-                  {collections?.slice(0, 6).map((c) => (
-                    <li key={c.id}>
-                      <LocalizedClientLink
-                        className="hover:text-gray-300"
-                        href={`/collections/${c.handle}`}
-                      >
-                        {c.title}
-                      </LocalizedClientLink>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
+            <div className="flex flex-col gap-y-2">
+              <span className="txt-small-plus text-gray-300 font-semibold">Danh Mục Sản Phẩm</span>
+              <ul className="grid grid-cols-1 gap-y-2 text-gray-400 txt-small">
+                {categories.map((category) => (
+                  <li key={category.id}>
+                    <LocalizedClientLink
+                      className="hover:text-gray-300"
+                      href={`/categories/${category.handle}`}
+                    >
+                      {category.title}
+                    </LocalizedClientLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
             <div className="flex flex-col gap-y-2">
               <span className="txt-small-plus text-gray-300 font-semibold">Hỗ Trợ</span>
               <ul className="grid grid-cols-1 gap-y-2 text-gray-400 txt-small">
