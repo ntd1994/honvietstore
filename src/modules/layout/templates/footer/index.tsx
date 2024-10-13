@@ -23,120 +23,128 @@ export default function Footer() {
 
   return (
     <footer className="bg-gray-800 text-white border-t border-gray-600 w-full">
-      <div className="content-container flex flex-col w-full p-10">
-        <div className="flex flex-col gap-y-6 xsmall:flex-row items-start justify-between">
-          <div>
+      <div className="content-container flex flex-col w-full p-4 md:p-10">
+        <div className="grid grid-cols-12 gap-y-6 gap-0 md:gap-24">
+          <div className="col-span-12 md:col-span-6">
             <LocalizedClientLink
               href="/"
               className="txt-compact-xlarge-plus text-white hover:text-gray-400 uppercase font-bold"
             >
               HONVIETSTORE
             </LocalizedClientLink>
-            <p className="text-gray-400 mt-2">
+            <p className="w-full text-white break-words whitespace-normal mt-2">
               TAP Market không chỉ là nơi mua sắm, mà còn là cầu nối văn hóa, giúp quảng bá các giá trị truyền thống và sản phẩm chất lượng cao của Việt Nam ra thế giới.
             </p>
-            <p className="text-gray-400 mt-2">
+            <p className="text-white mt-2">
               Thuộc hệ sinh thái TAP Media Inc
             </p>
-            <p className="text-gray-400 mt-2">
+            <p className="text-white mt-2">
               Email: contact@tapmediainc.com
             </p>
-            <p className="text-gray-400 mt-2">
+            <p className="text-white mt-2">
               Hotline: +13605050505
             </p>
-            <p className="text-gray-400 mt-2">
+            <p className="text-white mt-2">
               Website: <a href="https://tapmediainc.com" target="_blank" rel="noreferrer" className="text-blue-300 hover:underline">https://tapmediainc.com</a>
             </p>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-10">
-            <div className="flex flex-col gap-y-2">
-              <span className="txt-small-plus text-gray-300 font-semibold">Danh Mục Sản Phẩm</span>
-              <ul className="grid grid-cols-1 gap-y-2 text-gray-400 txt-small">
-                {categories.map((category) => (
-                  <li key={category.id}>
-                    <LocalizedClientLink
-                      className="hover:text-gray-300"
-                      href={`/categories/${category.handle}`}
+          <div className="col-span-12 sm:col-span-6">
+
+            {/* Thẻ con chiếm 6 cột cho danh mục sản phẩm */}
+            <div className="grid grid-cols-12 gap-8">
+              <div className="col-span-12 md:col-span-6">
+                <span className="txt-small-plus text-white font-semibold">Danh Mục Sản Phẩm</span>
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-2 text-white txt-small">
+                  {categories.map((category) => (
+                    <li key={category.id}>
+                      <LocalizedClientLink
+                        className="hover:text-white-800"
+                        href={`/categories/${category.handle}`}
+                      >
+                        {category.title}
+                      </LocalizedClientLink>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Thẻ con chiếm 3 cột cho Hỗ Trợ */}
+              <div className="col-span-12 sm:col-span-3">
+                <span className="txt-small-plus text-white font-semibold">Hỗ Trợ</span>
+                <ul className="grid grid-cols-1 gap-y-2 text-white txt-small">
+                  <li>
+                    <a
+                      href="/shopping-guide"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hover:text-white-300"
                     >
-                      {category.title}
-                    </LocalizedClientLink>
+                      Cách Mua Hàng
+                    </a>
                   </li>
-                ))}
-              </ul>
-            </div>
-            <div className="flex flex-col gap-y-2">
-              <span className="txt-small-plus text-gray-300 font-semibold">Hỗ Trợ</span>
-              <ul className="grid grid-cols-1 gap-y-2 text-gray-400 txt-small">
-                <li>
-                  <a
-                    href="/shopping-guide"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-gray-300"
-                  >
-                    Cách Mua Hàng
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/feedback"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-gray-300"
-                  >
-                    Phản Hồi Và Biên Nhận
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/faq"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-gray-300"
-                  >
-                    Câu Hỏi Thường Gặp
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/contact"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-gray-300"
-                  >
-                    Liên Hệ
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className="flex flex-col gap-y-2">
-              <span className="txt-small-plus text-gray-300 font-semibold">Tài Khoản</span>
-              <ul className="grid grid-cols-1 gap-y-2 text-gray-400 txt-small">
-                <li>
-                  <a
-                    href="/account"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-gray-300"
-                  >
-                    Đăng Nhập
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/account"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-gray-300"
-                  >
-                    Đăng Ký
-                  </a>
-                </li>
-              </ul>
+                  <li>
+                    <a
+                      href="/feedback"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hover:text-white-300"
+                    >
+                      Phản Hồi Và Biên Nhận
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/faq"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hover:text-white-300"
+                    >
+                      Câu Hỏi Thường Gặp
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/contact"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hover:text-white-300"
+                    >
+                      Liên Hệ
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Thẻ con chiếm 3 cột cho Tài Khoản */}
+              <div className="col-span-12 sm:col-span-3">
+                <span className="txt-small-plus text-white-300 font-semibold">Tài Khoản</span>
+                <ul className="grid grid-cols-1 gap-y-2 text-white-400 txt-small">
+                  <li>
+                    <a
+                      href="/account"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hover:text-white-300"
+                    >
+                      Đăng Nhập
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/account"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hover:text-white-300"
+                    >
+                      Đăng Ký
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
-        <div className="flex w-full mt-10 justify-between text-gray-500">
+        <div className="flex w-full mt-10 justify-between text-white-500">
           <Text className="txt-compact-small">
             © {new Date().getFullYear()} HONVIETSTORE. All rights reserved.
           </Text>
