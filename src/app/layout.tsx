@@ -34,7 +34,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
 
    </head>
       <body className="bg-gray-100">     
-        <main className="relative">{props.children}</main>
+        <main className="relative pt-4">{props.children}</main>
       </body>
     </html>
   )
