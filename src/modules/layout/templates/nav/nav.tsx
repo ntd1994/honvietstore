@@ -4,6 +4,7 @@ import LocalizedClientLink from "@modules/common/components/localized-client-lin
 import CartButton from "@modules/layout/components/cart-button"
 import SideMenu from "@modules/layout/components/side-menu"
 import { Suspense } from "react"
+
 const Navbar = () => {
   function toggleDropdown() {
     const dropdownMenu = document.getElementById("mega-menu-dropdown")!
@@ -14,9 +15,10 @@ const Navbar = () => {
       dropdownMenu.classList.add("hidden")
     }
   }
+
   return (
     <>
-      <div className="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto p-4">
+      <div className="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto p-2 ml-4">
         <div className="flex items-center md:order-2 space-x-1 md:space-x-2 rtl:space-x-reverse"></div>
         <div
           id="mega-menu"
@@ -26,7 +28,7 @@ const Navbar = () => {
             <li>
               <a
                 href="/"
-                className="block py-2 px-3 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-green-600 md:p-0 dark:text-green-500 md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-green-500 md:dark:hover:bg-transparent dark:border-gray-700"
+                className="block py-2 px-3 text-sm font-semibold text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-green-600 md:p-0 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-green-500 md:dark:hover:bg-transparent dark:border-gray-700"
                 aria-current="page"
               >
                 Trang Chủ
@@ -37,7 +39,7 @@ const Navbar = () => {
                 onClick={toggleDropdown}
                 id="mega-menu-dropdown-button"
                 data-dropdown-toggle="mega-menu-dropdown"
-                className="flex items-center justify-between w-full py-2 px-3 font-medium text-gray-900 border-b border-gray-100 md:w-auto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-green-600 md:p-0 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-green-500 md:dark:hover:bg-transparent dark:border-gray-700"
+                className="flex items-center justify-between w-full py-2 px-3 text-sm font-semibold text-gray-900 border-b border-gray-100 md:w-auto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-green-600 md:p-0 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-green-500 md:dark:hover:bg-transparent dark:border-gray-700"
               >
                 Hỗ Trợ{" "}
                 <svg
@@ -89,11 +91,6 @@ const Navbar = () => {
                         Câu Hỏi Thường Gặp
                       </a>
                     </li>
-                    {/* <li>
-                                    <a href="#" className="text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
-                                        Pro Version
-                                    </a>
-                                </li> */}
                   </ul>
                 </div>
                 <div className="p-4 pb-0 text-gray-900 md:pb-4 dark:text-white">
@@ -141,7 +138,7 @@ const Navbar = () => {
             <li>
               <a
                 href="/about"
-                className="block py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-green-600 md:p-0 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-green-500 md:dark:hover:bg-transparent dark:border-gray-700"
+                className="block py-2 px-3 text-sm font-semibold text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-green-600 md:p-0 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-green-500 md:dark:hover:bg-transparent dark:border-gray-700"
               >
                 Về Chúng Tôi
               </a>
@@ -149,7 +146,7 @@ const Navbar = () => {
             <li>
               <a
                 href="/contact"
-                className="block py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-green-600 md:p-0 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
+                className="block py-2 px-3 text-sm font-semibold text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-green-600 md:p-0 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
               >
                 Liên Hệ
               </a>

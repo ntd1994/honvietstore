@@ -28,23 +28,23 @@ export default function Footer() {
           <div className="col-span-12 md:col-span-6">
             <LocalizedClientLink
               href="/"
-              className="txt-compact-xlarge-plus text-white hover:text-gray-400 uppercase font-bold"
+              className="block txt-compact-xlarge-plus text-white hover:text-gray-400 uppercase font-bold mb-6"
             >
               HONVIETSTORE
             </LocalizedClientLink>
-            <p className="w-full text-white break-words whitespace-normal mt-2">
+            <p className="w-full text-gray-300 break-words whitespace-normal mt-2">
               TAP Market không chỉ là nơi mua sắm, mà còn là cầu nối văn hóa, giúp quảng bá các giá trị truyền thống và sản phẩm chất lượng cao của Việt Nam ra thế giới.
             </p>
-            <p className="text-white mt-2">
+            <p className="text-gray-300 mt-2">
               Thuộc hệ sinh thái TAP Media Inc
             </p>
-            <p className="text-white mt-2">
+            <p className="text-gray-300 mt-2">
               Email: contact@tapmediainc.com
             </p>
-            <p className="text-white mt-2">
+            <p className="text-gray-300 mt-2">
               Hotline: +13605050505
             </p>
-            <p className="text-white mt-2">
+            <p className="text-gray-300 mt-2">
               Website: <a href="https://tapmediainc.com" target="_blank" rel="noreferrer" className="text-blue-300 hover:underline">https://tapmediainc.com</a>
             </p>
           </div>
@@ -53,8 +53,10 @@ export default function Footer() {
             {/* Thẻ con chiếm 6 cột cho danh mục sản phẩm */}
             <div className="grid grid-cols-12 gap-8">
               <div className="col-span-12 md:col-span-6">
-                <span className="txt-small-plus text-white font-semibold">Danh Mục Sản Phẩm</span>
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-2 text-white txt-small">
+                <div className="txt-small-plus text-white font-semibold mb-6">
+                  Danh mục sản phẩm
+                </div>
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-2 text-gray-300 txt-small">
                   {categories.map((category) => (
                     <li key={category.id}>
                       <LocalizedClientLink
@@ -70,8 +72,10 @@ export default function Footer() {
 
               {/* Thẻ con chiếm 3 cột cho Hỗ Trợ */}
               <div className="col-span-12 sm:col-span-3">
-                <span className="txt-small-plus text-white font-semibold">Hỗ Trợ</span>
-                <ul className="grid grid-cols-1 gap-y-2 text-white txt-small">
+              <div className="txt-small-plus text-white font-semibold mb-6">
+                  Hỗ trợ
+                </div>
+                <ul className="grid grid-cols-1 gap-y-2 text-gray-300 txt-small">
                   <li>
                     <a
                       href="/shopping-guide"
@@ -79,7 +83,7 @@ export default function Footer() {
                       rel="noreferrer"
                       className="hover:text-white-300"
                     >
-                      Cách Mua Hàng
+                      Cách mua hàng
                     </a>
                   </li>
                   <li>
@@ -89,7 +93,7 @@ export default function Footer() {
                       rel="noreferrer"
                       className="hover:text-white-300"
                     >
-                      Phản Hồi Và Biên Nhận
+                      Phản hồi và biên nhận
                     </a>
                   </li>
                   <li>
@@ -99,7 +103,7 @@ export default function Footer() {
                       rel="noreferrer"
                       className="hover:text-white-300"
                     >
-                      Câu Hỏi Thường Gặp
+                      Câu hỏi thường gặp
                     </a>
                   </li>
                   <li>
@@ -109,7 +113,7 @@ export default function Footer() {
                       rel="noreferrer"
                       className="hover:text-white-300"
                     >
-                      Liên Hệ
+                      Liên hệ
                     </a>
                   </li>
                 </ul>
@@ -117,8 +121,10 @@ export default function Footer() {
 
               {/* Thẻ con chiếm 3 cột cho Tài Khoản */}
               <div className="col-span-12 sm:col-span-3">
-                <span className="txt-small-plus text-white-300 font-semibold">Tài Khoản</span>
-                <ul className="grid grid-cols-1 gap-y-2 text-white-400 txt-small">
+                <div className="txt-small-plus text-white font-semibold mb-6">
+                    Tài khoản
+                </div>
+                <ul className="grid grid-cols-1 gap-y-2 text-gray-300 txt-small">
                   <li>
                     <a
                       href="/account"
@@ -126,7 +132,7 @@ export default function Footer() {
                       rel="noreferrer"
                       className="hover:text-white-300"
                     >
-                      Đăng Nhập
+                      Đăng nhập
                     </a>
                   </li>
                   <li>
@@ -136,7 +142,7 @@ export default function Footer() {
                       rel="noreferrer"
                       className="hover:text-white-300"
                     >
-                      Đăng Ký
+                      Đăng ký
                     </a>
                   </li>
                 </ul>

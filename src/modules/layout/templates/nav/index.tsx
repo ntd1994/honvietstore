@@ -8,70 +8,72 @@ import Image from "next/image"
 import userImage from "../../../../../public/static/images/user.png"
 import "../../../../styles/nav.modules.css"
 import CategoryMenu from "components/MenuButton/MenuButton"
+import SearchBar from "components/SearchBar/SearchBar"
+import LocationDisplay from "components/LocationDisplay/LocationDisplay" 
 
 export default async function Nav() {
-  const regions = await listRegions().then((regions) => regions)
+  const regions = await listRegions().then((regions) => regions);
 
   return (
     <div className="fixed top-0 inset-x-0 z-50 group">
-      <header className="bg-white relative h-16 mx-auto duration-200 border-ui-border-base shadow-md transition-shadow duration-300">
-        <nav className="sticky top-0 w-full z-50 grid grid-cols-12 gap-0 content-container txt-xsmall-plus text-ui-fg-subtle h-full text-small-regular">
+      <header className="bg-white relative mx-auto duration-200 border-ui-border-base shadow-md transition-shadow duration-300 ">
+        <nav className="sticky top-0 w-full z-50 grid grid-cols-12 gap-0 txt-xsmall-plus text-ui-fg-subtle h-full text-small-regular px-8 py-4">
           <div className="col-span-12 md:col-start-1 md:col-end-12 flex items-center justify-between h-full text-small-regular">
             {/* Group 1: Honvietstore and Navbar */}
             <div className="flex items-center flex-shrink-0">
-              <div className="flex items-center flex-shrink-0 text-black mr-2">
-                <span className="font-semibold text-xl tracking-tight">
+              <div className="flex items-center flex-shrink-0 text-black">
+                <span className="font-semibold text-xl tracking-tight text-green-500">
                   Honvietstore
                 </span>
               </div>
               <Navbar />
             </div>
 
-            {/* Space between Group 1 and Group 2 */}
-            <div className="flex-1" />
+            <SearchBar/>
 
             {/* Group 2: Search and Cart */}
-            <div className="flex items-center gap-x-6 h-full flex-shrink-0">
-              <div className="hidden small:flex items-center gap-x-6 h-full">
-                {process.env.FEATURE_SEARCH_ENABLED && (
-                  <LocalizedClientLink
-                    className="hover:text-ui-fg-base"
-                    href="/search"
-                    scroll={false}
+            <div className="col-span-4 grid grid-rows-2 h-full flex-shrink-0 hidden md:block">
+              {/* Hàng đầu tiên: Cart và Tài khoản */}
+              <div className="flex items-center gap-x-6">
+                <div className="p-2">
+                  <Suspense
+                    fallback={
+                      <LocalizedClientLink
+                        className="hover:text-ui-fg-base flex gap-2 z-0"
+                        href="/cart"
+                      >
+                        Cart (0)
+                      </LocalizedClientLink>
+                    }
                   >
-                    Search
-                  </LocalizedClientLink>
-                )}
+                    <CartButton />
+                  </Suspense>
+                </div>
+
                 <LocalizedClientLink
-                  className="hover:text-ui-fg-base"
+                  className="relative flex items-center transition-all duration-300"
                   href="/account"
                 >
-                  <Image
-                    src={userImage}
-                    height={18}
-                    width={18}
-                    alt="account-icon"
-                  />
+                  {/* Khối nội dung Tài khoản */}
+                  <div className="relative flex items-center group">
+                    <Image
+                      src={userImage}
+                      height={18}
+                      width={18}
+                      alt="account-icon"
+                      className="mr-2"
+                    />
+                    <span className="text-sm font-semibold">Tài khoản</span>
+                  </div>
                 </LocalizedClientLink>
               </div>
-              <Suspense
-                fallback={
-                  <LocalizedClientLink
-                    className="hover:text-ui-fg-base flex gap-2 z-0"
-                    href="/cart"
-                  >
-                    Cart (0)
-                  </LocalizedClientLink>
-                }
-              >
-                <CartButton />
-              </Suspense>
-              <div className=" items-center gap-x-6 h-full flex-1 justify-end hidden md:flex">
-                <div id="google_translate_element"></div>
+
+              {/* Hàng thứ hai: Location */}
+              <div className="flex items-center">
+                <LocationDisplay />
               </div>
-              {/* menu button */}
-              <CategoryMenu/>
             </div>
+            <CategoryMenu />
           </div>
         </nav>
         {/* Đường phân cách */}
@@ -110,5 +112,5 @@ export default async function Nav() {
         {/* end thanh cam kết */}
       </header>
     </div>
-  )
+  );
 }

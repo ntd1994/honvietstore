@@ -27,7 +27,7 @@ const Slideshow: React.FC<SlideshowProps> = ({ images }) => {
   }, [images.length])
 
   return (
-    <div className={`flex w-full h-auto items-center justify-between ${isMobile ? "px-0 mt-24" : "px-8  mt-32"}`}>
+    <div className={`flex w-full h-auto items-center justify-between ${isMobile ? "px-0 mt-24" : "px-8  mt-36"}`}>
       {/* Image 1 */}
       <div className={` relative  shadow-xl ${isMobile ? "w-full": "w-[calc(50%-16px)] rounded-lg" }`}>
         <img
