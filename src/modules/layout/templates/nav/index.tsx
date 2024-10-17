@@ -9,7 +9,9 @@ import userImage from "../../../../../public/static/images/user.png"
 import "../../../../styles/nav.modules.css"
 import CategoryMenu from "components/MenuButton/MenuButton"
 import SearchBar from "components/SearchBar/SearchBar"
-import LocationDisplay from "components/LocationDisplay/LocationDisplay" 
+import LocationDisplay from "components/LocationDisplay/LocationDisplay"
+import HonVietLogo from "../../../../../public/static/images/honvietstore_logo.jpg"
+import Link from "next/link"
 
 export default async function Nav() {
   const regions = await listRegions().then((regions) => regions);
@@ -17,14 +19,25 @@ export default async function Nav() {
   return (
     <div className="fixed top-0 inset-x-0 z-50 group">
       <header className="bg-white relative mx-auto duration-200 border-ui-border-base shadow-md transition-shadow duration-300 ">
-        <nav className="sticky top-0 w-full z-50 grid grid-cols-12 gap-0 txt-xsmall-plus text-ui-fg-subtle h-full text-small-regular px-8 py-4">
+        <nav className="sticky top-0 w-full z-50 grid grid-cols-12 gap-0 txt-xsmall-plus text-ui-fg-subtle h-full text-small-regular px-2 md:px-16 py-4">
           <div className="col-span-12 md:col-start-1 md:col-end-12 flex items-center justify-between h-full text-small-regular">
             {/* Group 1: Honvietstore and Navbar */}
             <div className="flex items-center flex-shrink-0">
               <div className="flex items-center flex-shrink-0 text-black">
-                <span className="font-semibold text-xl tracking-tight text-green-500">
+                {/* <span className="font-semibold text-xl tracking-tight text-green-500">
                   Honvietstore
-                </span>
+                </span> */}
+                <div className="flex items-center flex-shrink-0">
+                  <Link href="/" passHref className="flex items-center hover:opacity-80 transition-opacity duration-200">
+                    <Image
+                      src={HonVietLogo}
+                      alt="Honvietstore Logo"
+                      width={150}
+                      height={50}
+                      className="h-auto w-auto"
+                    />
+                  </Link>
+                </div>
               </div>
               <Navbar />
             </div>
@@ -66,6 +79,12 @@ export default async function Nav() {
                     <span className="text-sm font-semibold">Tài khoản</span>
                   </div>
                 </LocalizedClientLink>
+
+                <div className="flex items-center gap-x-6 h-full flex-1 justify-end hidden md:flex">
+                    <div className="flex items-center">
+                      <div id="google_translate_element"></div>
+                    </div>
+                </div>
               </div>
 
               {/* Hàng thứ hai: Location */}

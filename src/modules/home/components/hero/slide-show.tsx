@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react"
-import Image from "next/image"
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
 
 interface SlideshowProps {
-  images: string[]
+  images: string[];
 }
 
 const Slideshow: React.FC<SlideshowProps> = ({ images }) => {
@@ -18,35 +18,42 @@ const Slideshow: React.FC<SlideshowProps> = ({ images }) => {
     updateMedia(); // Initial check
 
     const intervalId = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length)
-    }, 3000) // Change image every 3 seconds
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 3000); // Change image every 3 seconds
+
     return () => {
       window.removeEventListener("resize", updateMedia);
       clearInterval(intervalId);
-    }
-  }, [images.length])
+    };
+  }, [images.length]);
 
   return (
-    <div className={`flex w-full h-auto items-center justify-between ${isMobile ? "px-0 mt-24" : "px-8  mt-36"}`}>
+    <div className={`flex w-full h-auto items-center justify-between ${isMobile ? "px-0 mt-24" : "px-8 mt-36"}`}>
       {/* Image 1 */}
-      <div className={` relative  shadow-xl ${isMobile ? "w-full": "w-[calc(50%-16px)] rounded-lg" }`}>
-        <img
+      <div className={`relative shadow-xl ${isMobile ? "w-full" : "w-[calc(50%-16px)] rounded-lg"}`}>
+        <Image
           alt={`Image 1 - Slide ${currentImageIndex + 1}`}
           src={images[currentImageIndex]}
-          className="transition-transform duration-1000 rounded-lg w-full h-auto object-cover shadow-xl"
+          className="transition-transform duration-1000 rounded-lg object-cover shadow-xl"
+          layout="responsive" // Tự động điều chỉnh kích thước
+          width={1200} // Chiều rộng cơ sở
+          height={800} // Chiều cao cơ sở
         />
       </div>
 
       {/* Image 2 */}
       <div className="hidden md:block w-[calc(50%-16px)] relative rounded-lg shadow-xl">
-        <img
+        <Image
           alt={`Image 2 - Slide ${currentImageIndex + 1}`}
           src={images[(currentImageIndex + 1) % images.length]}
-          className={`transition-transform duration-1000 rounded-lg w-full h-auto object-contain shadow-xl`}
+          className="transition-transform duration-1000 rounded-lg object-contain shadow-xl"
+          layout="responsive" // Tự động điều chỉnh kích thước
+          width={1200} // Chiều rộng cơ sở
+          height={800} // Chiều cao cơ sở
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Slideshow
+export default Slideshow;

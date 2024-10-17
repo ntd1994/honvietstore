@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { FaMapMarkerAlt } from "react-icons/fa"; // Nhập biểu tượng vị trí
+import { FaMapMarkerAlt } from "react-icons/fa";
 
 const LocationDisplay = () => {
   const [location, setLocation] = useState({ lat: null, lng: null });
@@ -8,22 +8,34 @@ const LocationDisplay = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Kiểm tra nếu trình duyệt hỗ trợ geolocation
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude } = position.coords;
-          setLocation({ lat: latitude, lng: longitude });
-          fetchAddress(latitude, longitude);
-        },
-        (error) => {
-          console.error("Error getting location:", error);
-          setLoading(false);
-        }
-      );
-    } else {
-      console.error("Geolocation is not supported by this browser.");
+    // Kiểm tra nếu đã có vị trí trong localStorage
+    const savedLocation = JSON.parse(localStorage.getItem("userLocation"));
+    const savedAddress = localStorage.getItem("userAddress");
+
+    if (savedLocation && savedAddress) {
+      setLocation(savedLocation);
+      setAddress(savedAddress);
       setLoading(false);
+    } else {
+      // Nếu không có thông tin, yêu cầu quyền truy cập vị trí
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const { latitude, longitude } = position.coords;
+            setLocation({ lat: latitude, lng: longitude });
+
+            // Gọi hàm để lấy địa chỉ từ tọa độ
+            fetchAddress(latitude, longitude);
+          },
+          (error) => {
+            console.error("Error getting location:", error);
+            setLoading(false);
+          }
+        );
+      } else {
+        console.error("Geolocation is not supported by this browser.");
+        setLoading(false);
+      }
     }
   }, []);
 
@@ -38,14 +50,21 @@ const LocationDisplay = () => {
       // Tách các phần của địa chỉ và chỉ giữ lại phường, quận, thành phố
       const addressParts = fullAddress.split(", ");
       const filteredAddress = addressParts
-        .filter((part) => 
-          part.includes("Phường") || 
-          part.includes("Quận") || 
+        .filter((part) =>
+          part.includes("Phường") ||
+          part.includes("Quận") ||
           part.includes("Thành phố")
         )
         .join(", ");
 
       setAddress(filteredAddress);
+
+      // Lưu vị trí và địa chỉ vào localStorage
+      localStorage.setItem(
+        "userLocation",
+        JSON.stringify({ lat: latitude, lng: longitude })
+      );
+      localStorage.setItem("userAddress", filteredAddress);
     } catch (error) {
       console.error("Error fetching address:", error);
     } finally {
