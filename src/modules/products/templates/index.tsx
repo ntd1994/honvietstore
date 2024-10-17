@@ -83,7 +83,8 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
             <div className="mt-4">
               <span className="font-medium text-sm text-gray-500">Thương hiệu:</span>
               <span className="ml-2 text-sm font-semibold text-gray-700">
-                {product.brand || "No brand"}
+                {/* {product.brand || "No brand"} */}
+                No brand
               </span>
             </div>
 

@@ -1,6 +1,9 @@
 import { Text } from "@medusajs/ui"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import MedusaCTA from "@modules/layout/components/medusa-cta"
+import Link from "next/link"
+import Image from "next/image";
+import HonVietLogo from "../../../../../public/static/images/honvietstore_logo.jpg"
 
 export default function Footer() {
   const categories = [
@@ -26,12 +29,15 @@ export default function Footer() {
       <div className="content-container flex flex-col w-full p-4 md:p-10">
         <div className="grid grid-cols-12 gap-y-6 gap-0 md:gap-24">
           <div className="col-span-12 md:col-span-6">
-            <LocalizedClientLink
-              href="/"
-              className="block txt-compact-xlarge-plus text-white hover:text-gray-400 uppercase font-bold mb-6"
-            >
-              HONVIETSTORE
-            </LocalizedClientLink>
+            <Link href="/" passHref className="block mb-6 hover:opacity-80 transition-opacity duration-200">
+                <Image
+                  src={HonVietLogo}
+                  alt="Honvietstore Logo"
+                  width={150} // Đặt kích thước phù hợp với footer
+                  height={50} // Đặt kích thước phù hợp với footer
+                  className="h-auto w-auto"
+                />
+            </Link>
             <p className="w-full text-gray-300 break-words whitespace-normal mt-2">
               TAP Market không chỉ là nơi mua sắm, mà còn là cầu nối văn hóa, giúp quảng bá các giá trị truyền thống và sản phẩm chất lượng cao của Việt Nam ra thế giới.
             </p>
