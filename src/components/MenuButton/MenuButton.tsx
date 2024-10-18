@@ -43,7 +43,7 @@ export default function CategoryMenu() {
   };
 
   return (
-    <div className="block md:hidden relative z-10">
+    <div className="block md:hidden fixed top-8 right-6 z-10">
       <button
         onClick={toggleMenu}
         className="p-2 rounded-md text-gray-700 hover:bg-gray-200 transition-colors duration-200"

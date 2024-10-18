@@ -47,14 +47,16 @@ const LocationDisplay = () => {
       const data = await response.json();
       const fullAddress = data.display_name;
 
-      // Tách các phần của địa chỉ và chỉ giữ lại phường, quận, thành phố
+      // Tách các phần của địa chỉ và thay đổi các phần tử theo yêu cầu
       const addressParts = fullAddress.split(", ");
       const filteredAddress = addressParts
-        .filter((part) =>
-          part.includes("Phường") ||
-          part.includes("Quận") ||
-          part.includes("Thành phố")
-        )
+        .map((part) => {
+          if (part.includes("Phường")) return part.replace(/Phường/g, "P.");
+          if (part.includes("Quận")) return part.replace(/Quận/g, "Q.");
+          if (part.includes("Thành phố")) return part.replace(/Thành phố/g, "TP.");
+          return part;
+        })
+        .filter((part) => part.includes("P.") || part.includes("Q.") || part.includes("TP."))
         .join(", ");
 
       setAddress(filteredAddress);
@@ -77,11 +79,11 @@ const LocationDisplay = () => {
   }
 
   return (
-    <div className="flex items-center gap-x-2">
+    <div className="flex items-center gap-x-2 whitespace-nowrap">
       <FaMapMarkerAlt className="text-red-500" />
-      <h4 className="text-lg font-bold">Giao đến:</h4>
+      <h4 className="hidden md:block text-lg font-bold">Giao đến:</h4>
       {location.lat && location.lng ? (
-        <p className="ml-2 underline">{address}</p>
+        <p className="md:ml-2 underline">{address}</p>
       ) : (
         <p className="ml-2">Không thể lấy vị trí của bạn</p>
       )}

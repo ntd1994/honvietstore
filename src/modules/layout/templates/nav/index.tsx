@@ -12,6 +12,7 @@ import SearchBar from "components/SearchBar/SearchBar"
 import LocationDisplay from "components/LocationDisplay/LocationDisplay"
 import HonVietLogo from "../../../../../public/static/images/honvietstore_logo.jpg"
 import Link from "next/link"
+import GoogleTranslateComponent from "components/GoogleTranslate/GoogleTranslate"
 
 export default async function Nav() {
   const regions = await listRegions().then((regions) => regions);
@@ -45,10 +46,10 @@ export default async function Nav() {
             <SearchBar/>
 
             {/* Group 2: Search and Cart */}
-            <div className="col-span-4 grid grid-rows-2 h-full flex-shrink-0 hidden md:block">
+            <div className="col-span-4 grid grid-rows-2 h-full flex-shrink-0 block">
               {/* Hàng đầu tiên: Cart và Tài khoản */}
               <div className="flex items-center gap-x-6">
-                <div className="p-2">
+                <div className="p-2 hidden md:block">
                   <Suspense
                     fallback={
                       <LocalizedClientLink
@@ -64,7 +65,7 @@ export default async function Nav() {
                 </div>
 
                 <LocalizedClientLink
-                  className="relative flex items-center transition-all duration-300"
+                  className="relative md:flex items-center transition-all duration-300"
                   href="/account"
                 >
                   {/* Khối nội dung Tài khoản */}
@@ -80,15 +81,19 @@ export default async function Nav() {
                   </div>
                 </LocalizedClientLink>
 
-                <div className="flex items-center gap-x-6 h-full flex-1 justify-end hidden md:flex">
+                {/* <div className="flex items-center gap-x-6 h-full flex-1 justify-end hidden md:flex">
                     <div className="flex items-center">
                       <div id="google_translate_element"></div>
                     </div>
+                </div> */}
+                {/* Google Translate Component */}
+                <div className="flex items-center justify-center md:justify-end">
+                  <GoogleTranslateComponent />
                 </div>
               </div>
 
               {/* Hàng thứ hai: Location */}
-              <div className="flex items-center">
+              <div className="md:flex items-center">
                 <LocationDisplay />
               </div>
             </div>
