@@ -47,17 +47,18 @@ const LocationDisplay = () => {
       const data = await response.json();
       const fullAddress = data.display_name;
 
-      // Tách các phần của địa chỉ và thay đổi các phần tử theo yêu cầu
+      // Tách các phần của địa chỉ và loại bỏ mã bưu điện và quốc gia
       const addressParts = fullAddress.split(", ");
       const filteredAddress = addressParts
-        .map((part) => {
-          if (part.includes("Phường")) return part.replace(/Phường/g, "P.");
-          if (part.includes("Quận")) return part.replace(/Quận/g, "Q.");
-          if (part.includes("Thành phố")) return part.replace(/Thành phố/g, "TP.");
-          return part;
-        })
-        .filter((part) => part.includes("P.") || part.includes("Q.") || part.includes("TP."))
-        .join(", ");
+        .filter(
+          (part) =>
+            !/^\d{5,}/.test(part) && // Loại bỏ mã bưu điện
+            !part.toLowerCase().includes("việt nam") // Loại bỏ quốc gia
+        )
+        .join(", ")
+        .replace(/Phường/g, "P.")
+        .replace(/Quận/g, "Q.")
+        .replace(/Thành phố/g, "TP.");
 
       setAddress(filteredAddress);
 
@@ -79,11 +80,11 @@ const LocationDisplay = () => {
   }
 
   return (
-    <div className="flex items-center gap-x-2 whitespace-nowrap">
+    <div className="flex items-center gap-x-2 whitespace-pre-wrap">
       <FaMapMarkerAlt className="text-red-500" />
       <h4 className="hidden md:block text-lg font-bold">Giao đến:</h4>
       {location.lat && location.lng ? (
-        <p className="md:ml-2 underline">{address}</p>
+        <p className="md:ml-2 underline break-words">{address}</p>
       ) : (
         <p className="ml-2">Không thể lấy vị trí của bạn</p>
       )}
